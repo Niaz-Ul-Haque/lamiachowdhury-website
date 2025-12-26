@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState, ReactNode } from "react";
+import { useEffect, useRef, useState, ReactNode, HTMLAttributes } from "react";
 
-interface AnimatedSectionProps {
+interface AnimatedSectionProps extends Omit<HTMLAttributes<HTMLDivElement>, 'className'> {
   children: ReactNode;
   className?: string;
   delay?: number;
@@ -16,6 +16,7 @@ export function AnimatedSection({
   delay = 0,
   animation = "fade-up",
   threshold = 0.1,
+  ...rest
 }: AnimatedSectionProps) {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -56,6 +57,7 @@ export function AnimatedSection({
     <div
       ref={sectionRef}
       className={`${animationClasses[animation]} ${className}`}
+      {...rest}
     >
       {children}
     </div>

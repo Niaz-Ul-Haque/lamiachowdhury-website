@@ -63,13 +63,13 @@ export function Header() {
         {/* Logo */}
         <Link
           href="/"
-          className="relative z-50 flex flex-col"
+          className="relative z-50 flex flex-col logo-animated"
           aria-label={`${SITE_CONFIG.name} - Home`}
         >
           <span className={`font-display text-xl md:text-2xl font-semibold tracking-tight transition-colors ${useDarkText ? 'text-forest' : 'text-white'}`}>
             {SITE_CONFIG.name}
           </span>
-          <span className={`text-xs tracking-widest uppercase transition-colors ${useDarkText ? 'text-warm-gray' : 'text-gold'}`}>
+          <span className={`logo-tagline text-xs tracking-widest uppercase transition-colors ${useDarkText ? 'text-warm-gray' : 'text-gold'}`}>
             {SITE_CONFIG.tagline}
           </span>
         </Link>
@@ -82,23 +82,20 @@ export function Header() {
                 <Link
                   href={item.href}
                   role="menuitem"
-                  className={`relative py-2 text-sm font-medium tracking-wide transition-colors ${
+                  className={`relative py-2 text-sm font-medium tracking-wide transition-colors nav-link-animated ${
                     pathname === item.href
-                      ? useDarkText ? "text-forest" : "!text-gold"
+                      ? `nav-link-active ${useDarkText ? "text-forest" : "!text-gold"}`
                       : useDarkText ? "text-charcoal-light hover:text-forest" : "!text-white hover:!text-gold"
                   }`}
                 >
                   {item.label}
-                  {pathname === item.href && (
-                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gold" />
-                  )}
                 </Link>
               </li>
             ))}
           </ul>
 
           {/* Desktop CTA */}
-          <Link href="/contact" className={`btn ${useDarkText ? 'btn-primary' : 'btn-gold'}`}>
+          <Link href="/contact" className={`btn ${useDarkText ? 'btn-primary' : 'btn-gold'} btn-icon-slide`}>
             Book Consultation
           </Link>
         </div>

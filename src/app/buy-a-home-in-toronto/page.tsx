@@ -5,6 +5,7 @@ import { SITE_CONFIG, FAQS, FEATURED_NEIGHBORHOODS } from "@/lib/constants";
 import { FaqJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { NeighborhoodCard } from "@/components/ui/NeighborhoodCard";
 import { CTASection } from "@/components/sections/CTASection";
+import { AnimatedSection, AnimatedChildren } from "@/components/ui/AnimatedSection";
 
 export const metadata: Metadata = {
   title: "Buy a Home in Toronto | First-Time Buyer Guide | GTA Real Estate",
@@ -106,7 +107,7 @@ export default function BuyHomePage() {
       />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-forest text-white relative overflow-hidden">
+      <AnimatedSection animation="fade-up" className="pt-32 pb-16 bg-forest text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -141,10 +142,10 @@ export default function BuyHomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Why Buy With Me */}
-      <section className="section-padding bg-white" aria-labelledby="why-heading">
+      <AnimatedSection animation="fade-up" className="section-padding bg-white" aria-labelledby="why-heading">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -227,10 +228,10 @@ export default function BuyHomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* The Buying Process */}
-      <section className="section-padding bg-ivory" aria-labelledby="process-heading">
+      <AnimatedSection animation="fade-up" className="section-padding bg-ivory" aria-labelledby="process-heading">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-sm font-semibold text-gold uppercase tracking-widest">
@@ -259,10 +260,10 @@ export default function BuyHomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* First-Time Buyer Section */}
-      <section className="section-padding bg-white" aria-labelledby="first-time-heading">
+      <AnimatedSection animation="fade-up" className="section-padding bg-white" aria-labelledby="first-time-heading">
         <div className="container">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
@@ -305,10 +306,11 @@ export default function BuyHomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Neighborhoods */}
-      <section
+      <AnimatedSection
+        animation="fade-up"
         id="neighborhoods"
         className="section-padding bg-ivory"
         aria-labelledby="neighborhoods-heading"
@@ -339,10 +341,10 @@ export default function BuyHomePage() {
             </Link>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* FAQ */}
-      <section className="section-padding bg-white" aria-labelledby="faq-heading">
+      <AnimatedSection animation="fade-up" className="section-padding bg-white" aria-labelledby="faq-heading">
         <div className="container">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
@@ -384,7 +386,7 @@ export default function BuyHomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* CTA */}
       <CTASection variant="consultation" />

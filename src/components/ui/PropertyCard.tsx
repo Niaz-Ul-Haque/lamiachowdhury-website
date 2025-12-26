@@ -26,8 +26,8 @@ export function PropertyCard({
   image,
 }: PropertyCardProps) {
   return (
-    <article className="card group">
-      <div className="relative aspect-[4/3] bg-ivory-dark overflow-hidden">
+    <article className="card group card-shine">
+      <div className="relative aspect-[4/3] bg-ivory-dark overflow-hidden image-shine">
         {image ? (
           <Image
             src={image}
@@ -62,7 +62,7 @@ export function PropertyCard({
 
         {/* Status Badge */}
         <div className="absolute top-4 left-4 z-10">
-          <span className="badge badge-forest">{status}</span>
+          <span className="badge badge-forest badge-animate-in">{status}</span>
         </div>
 
         {/* Hover Overlay */}
@@ -91,9 +91,9 @@ export function PropertyCard({
 
         {/* Features */}
         <div className="flex items-center gap-4 text-sm text-charcoal-light border-t border-ivory-dark pt-4">
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 feature-icon-animated" style={{ transitionDelay: '0ms' }}>
             <svg
-              className="w-4 h-4 text-warm-gray"
+              className="w-4 h-4 text-warm-gray transition-colors duration-300 group-hover:text-gold"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -108,9 +108,9 @@ export function PropertyCard({
             </svg>
             <span>{bedrooms} Beds</span>
           </div>
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 feature-icon-animated" style={{ transitionDelay: '100ms' }}>
             <svg
-              className="w-4 h-4 text-warm-gray"
+              className="w-4 h-4 text-warm-gray transition-colors duration-300 group-hover:text-gold"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -125,9 +125,9 @@ export function PropertyCard({
             </svg>
             <span>{bathrooms} Baths</span>
           </div>
-          <div className="flex items-center gap-1.5">
+          <div className="flex items-center gap-1.5 feature-icon-animated" style={{ transitionDelay: '200ms' }}>
             <svg
-              className="w-4 h-4 text-warm-gray"
+              className="w-4 h-4 text-warm-gray transition-colors duration-300 group-hover:text-gold"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -147,7 +147,7 @@ export function PropertyCard({
         {/* CTA */}
         <Link
           href="/contact"
-          className="btn btn-secondary w-full mt-6"
+          className="btn btn-secondary w-full mt-6 btn-icon-slide"
         >
           Inquire Now
         </Link>

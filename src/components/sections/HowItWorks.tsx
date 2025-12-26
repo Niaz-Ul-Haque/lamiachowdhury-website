@@ -53,8 +53,22 @@ export function HowItWorks() {
           <p className="text-charcoal-light mb-6">
             Ready to begin? Let&apos;s start with a no-obligation conversation.
           </p>
-          <Link href="/contact" className="btn btn-primary pulse-glow">
+          <Link href="/contact" className="btn btn-primary pulse-glow btn-icon-slide group/cta">
             Book Your Discovery Call
+            <svg
+              className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/cta:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+              />
+            </svg>
           </Link>
         </AnimatedSection>
       </div>

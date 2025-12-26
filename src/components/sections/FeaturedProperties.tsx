@@ -29,9 +29,23 @@ export function FeaturedProperties() {
 
           <Link
             href="/contact"
-            className="btn btn-secondary shrink-0"
+            className="btn btn-secondary shrink-0 btn-icon-slide group/cta"
           >
             See All Listings
+            <svg
+              className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/cta:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
           </Link>
         </AnimatedSection>
 

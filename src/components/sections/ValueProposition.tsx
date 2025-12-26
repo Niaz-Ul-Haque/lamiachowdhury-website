@@ -77,8 +77,10 @@ export function ValueProposition() {
               className="group p-8 bg-white rounded-lg shadow-sm border border-transparent hover:border-gold/20 hover:shadow-lg hover:-translate-y-2 transition-all duration-300"
             >
               {/* Icon */}
-              <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-6 group-hover:bg-gold group-hover:text-white transition-colors duration-300">
-                {value.icon}
+              <div className="w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center text-gold mb-6 group-hover:bg-gold group-hover:text-white group-hover:scale-110 transition-all duration-300">
+                <div className="group-hover:animate-icon-bounce">
+                  {value.icon}
+                </div>
               </div>
 
               {/* Content */}
@@ -94,8 +96,22 @@ export function ValueProposition() {
 
         {/* CTA */}
         <AnimatedSection className="text-center mt-12" delay={400}>
-          <Link href="/about" className="btn btn-secondary">
+          <Link href="/about" className="btn btn-secondary btn-icon-slide group/cta">
             Learn More About My Approach
+            <svg
+              className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/cta:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
           </Link>
         </AnimatedSection>
       </div>

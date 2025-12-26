@@ -1,8 +1,19 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 import { AGENT_INFO } from "@/lib/constants";
 
 export function Hero() {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    // Trigger animation after a short delay for smoother entrance
+    const timer = setTimeout(() => setImageLoaded(true), 300);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <section
       className="relative min-h-[90vh] flex items-center overflow-hidden"
@@ -82,11 +93,39 @@ export function Hero() {
 
           {/* CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 animate-fade-in-up delay-300">
-            <Link href="/contact" className="btn btn-gold">
+            <Link href="/contact" className="btn btn-gold btn-icon-slide group/cta">
               Book a Consultation
+              <svg
+                className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/cta:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
             </Link>
-            <Link href="/buy-a-home-in-toronto" className="btn btn-white">
+            <Link href="/buy-a-home-in-toronto" className="btn btn-white btn-icon-slide group/cta">
               Start Your Search
+              <svg
+                className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/cta:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
             </Link>
           </div>
 
@@ -107,32 +146,37 @@ export function Hero() {
 
         {/* Lamia Headshot */}
         <div className="hidden lg:block absolute right-8 xl:right-16 top-1/2 -translate-y-1/2">
-          <div className="relative w-80 h-[420px] rounded-lg overflow-hidden border-2 border-gold/30 shadow-2xl">
+          <div 
+            className={`relative w-96 xl:w-[420px] h-[520px] xl:h-[580px] rounded-lg overflow-hidden border-2 border-gold/30 shadow-2xl transition-all duration-1000 ease-out ${imageLoaded ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 translate-x-8 scale-95'}`}
+          >
             <Image
               src="/half-body-headshot-blackcoat.png"
               alt={`${AGENT_INFO.name} - Toronto Real Estate Agent`}
               fill
               className="object-cover object-top"
               priority
+              onLoad={() => setImageLoaded(true)}
             />
-            {/* Decorative corner accent */}
-            <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gold/40 rounded-full blur-2xl" />
+            {/* Decorative corner accent with glow animation */}
+            <div className={`absolute -bottom-4 -right-4 w-24 h-24 bg-gold/40 rounded-full blur-2xl transition-all duration-1000 ${imageLoaded ? 'opacity-100 animate-glow-pulse' : 'opacity-0'}`} style={{ transitionDelay: '500ms' }} />
             {/* Golden frame accent */}
             <div className="absolute inset-0 border-2 border-gold/20 rounded-lg pointer-events-none" />
+            {/* Shimmer overlay on hover */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-500 -translate-x-full hover:translate-x-full" style={{ transition: 'transform 0.8s ease-in-out, opacity 0.3s' }} />
           </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-scroll-bounce">
         <a
           href="#value-proposition"
-          className="flex flex-col items-center text-white/90 hover:text-white transition-colors"
+          className="flex flex-col items-center text-white/90 hover:text-white transition-colors group"
           aria-label="Scroll to learn more"
         >
-          <span className="text-xs uppercase tracking-widest mb-2">Explore</span>
+          <span className="text-xs uppercase tracking-widest mb-2 group-hover:text-gold transition-colors">Explore</span>
           <svg
-            className="w-5 h-5"
+            className="w-5 h-5 transition-transform duration-300 group-hover:translate-y-1"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

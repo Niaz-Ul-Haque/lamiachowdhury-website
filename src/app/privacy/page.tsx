@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { SITE_CONFIG, AGENT_INFO } from "@/lib/constants";
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
+import { AnimatedSection } from "@/components/ui/AnimatedSection";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Lamia Chowdhury Real Estate",
@@ -24,7 +25,7 @@ export default function PrivacyPage() {
       />
 
       {/* Header */}
-      <section className="pt-32 pb-12 bg-ivory">
+      <AnimatedSection animation="fade-up" className="pt-32 pb-12 bg-ivory">
         <div className="container">
           <div className="max-w-3xl mx-auto">
             <h1 className="text-4xl font-display font-semibold text-forest mb-4">
@@ -35,10 +36,10 @@ export default function PrivacyPage() {
             </p>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Content */}
-      <section className="section-padding bg-white">
+      <AnimatedSection animation="fade-up" className="section-padding bg-white">
         <div className="container">
           <div className="max-w-3xl mx-auto prose prose-lg">
             <p className="lead text-charcoal-light">
@@ -166,7 +167,7 @@ export default function PrivacyPage() {
             </Link>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
     </>
   );
 }

@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
 interface TestimonialCardProps {
   quote: string;
@@ -15,11 +18,35 @@ export function TestimonialCard({
   isSample = false,
   image,
 }: TestimonialCardProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLQuoteElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <blockquote className="relative bg-white p-8 rounded-lg shadow-sm border border-ivory-dark">
-      {/* Quote Icon */}
+    <blockquote 
+      ref={cardRef}
+      className="relative bg-white p-8 rounded-lg shadow-sm border border-ivory-dark transition-all duration-300 hover:shadow-lg hover:-translate-y-2 hover:border-gold/30"
+    >
+      {/* Quote Icon with animation */}
       <div className="absolute -top-4 left-8">
-        <div className="w-8 h-8 bg-gold rounded-full flex items-center justify-center">
+        <div className={`w-8 h-8 bg-gold rounded-full flex items-center justify-center shadow-md ${isVisible ? 'animate-quote-appear' : 'opacity-0'}`}>
           <svg
             className="w-4 h-4 text-forest-dark"
             fill="currentColor"
@@ -34,18 +61,18 @@ export function TestimonialCard({
       {/* Sample Badge */}
       {isSample && (
         <div className="absolute top-4 right-4">
-          <span className="text-xs text-warm-gray italic">Sample Testimonial</span>
+          {/* <span className="text-xs text-warm-gray italic">Sample Testimonial</span> */}
         </div>
       )}
 
-      {/* Quote */}
-      <p className="text-lg text-charcoal leading-relaxed mt-4 mb-6 italic">
+      {/* Quote with fade-in */}
+      <p className={`text-lg text-charcoal leading-relaxed mt-4 mb-6 italic transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`} style={{ transitionDelay: '150ms' }}>
         &ldquo;{quote}&rdquo;
       </p>
 
-      {/* Attribution */}
-      <footer className="flex items-center gap-3">
-        <div className="w-12 h-12 rounded-full bg-ivory flex items-center justify-center overflow-hidden">
+      {/* Attribution with slide-in */}
+      <footer className={`flex items-center gap-3 transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-4'}`} style={{ transitionDelay: '300ms' }}>
+        <div className="w-12 h-12 rounded-full bg-ivory flex items-center justify-center overflow-hidden ring-2 ring-transparent hover:ring-gold/30 transition-all duration-300">
           {image ? (
             <Image
               src={image}

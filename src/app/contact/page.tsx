@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SITE_CONFIG, AGENT_INFO } from "@/lib/constants";
 import { BreadcrumbJsonLd, LocalBusinessJsonLd } from "@/components/seo/JsonLd";
 import { ContactForm } from "@/components/ui/ContactForm";
+import { AnimatedSection, AnimatedChildren } from "@/components/ui/AnimatedSection";
 
 export const metadata: Metadata = {
   title: "Contact Lamia Chowdhury | Book a Consultation | Toronto Realtor",
@@ -45,7 +46,7 @@ export default function ContactPage() {
         </div>
 
         <div className="container relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
+          <AnimatedSection className="max-w-3xl mx-auto text-center">
             <span className="inline-block px-4 py-2 bg-gold/20 rounded-full text-sm text-gold font-medium mb-6">
               Let&apos;s Connect
             </span>
@@ -56,7 +57,7 @@ export default function ContactPage() {
               Whether you&apos;re ready to buy, sell, or just have questions about
               the Toronto or Dubai real estate market, I&apos;m here to help.
             </p>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -218,7 +219,7 @@ export default function ContactPage() {
       {/* Calendly Section */}
       <section className="section-padding bg-ivory" aria-labelledby="booking-heading">
         <div className="container">
-          <div className="max-w-4xl mx-auto text-center">
+          <AnimatedSection className="max-w-4xl mx-auto text-center">
             <span className="text-sm font-semibold text-gold uppercase tracking-widest">
               Book Online
             </span>
@@ -241,7 +242,7 @@ export default function ContactPage() {
               Current placeholder URL: https://calendly.com/CHANGE-ME
               ================================================
             */}
-            <div className="bg-white p-8 rounded-lg shadow-sm">
+            <div className="bg-white p-8 rounded-lg shadow-sm hover:shadow-lg transition-shadow duration-300">
               <div className="aspect-video bg-ivory rounded flex items-center justify-center mb-6">
                 <div className="text-center text-warm-gray">
                   <svg
@@ -266,7 +267,7 @@ export default function ContactPage() {
                 href={SITE_CONFIG.calendlyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn btn-primary"
+                className="btn btn-primary pulse-glow"
               >
                 Book a Time on Calendly
               </a>
@@ -274,19 +275,19 @@ export default function ContactPage() {
                 Opens in a new window. Choose a time that works for you.
               </p>
             </div>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Quick Actions */}
       <section className="py-16 bg-white">
         <div className="container">
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+          <AnimatedSection className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <Link
               href="/buy-a-home-in-toronto"
-              className="p-6 bg-ivory rounded-lg text-center hover:shadow-lg transition-shadow group"
+              className="p-6 bg-ivory rounded-lg text-center hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group"
             >
-              <div className="w-12 h-12 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-forest transition-colors">
+              <div className="w-12 h-12 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-forest group-hover:scale-110 transition-all duration-300">
                 <svg
                   className="w-6 h-6 text-forest group-hover:text-white transition-colors"
                   fill="none"
@@ -311,9 +312,9 @@ export default function ContactPage() {
 
             <Link
               href="/sell-your-home-in-toronto"
-              className="p-6 bg-ivory rounded-lg text-center hover:shadow-lg transition-shadow group"
+              className="p-6 bg-ivory rounded-lg text-center hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group"
             >
-              <div className="w-12 h-12 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-forest transition-colors">
+              <div className="w-12 h-12 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-forest group-hover:scale-110 transition-all duration-300">
                 <svg
                   className="w-6 h-6 text-forest group-hover:text-white transition-colors"
                   fill="none"
@@ -338,9 +339,9 @@ export default function ContactPage() {
 
             <Link
               href="/dubai-real-estate"
-              className="p-6 bg-ivory rounded-lg text-center hover:shadow-lg transition-shadow group"
+              className="p-6 bg-ivory rounded-lg text-center hover:shadow-lg hover:-translate-y-2 transition-all duration-300 group"
             >
-              <div className="w-12 h-12 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-forest transition-colors">
+              <div className="w-12 h-12 bg-forest/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-forest group-hover:scale-110 transition-all duration-300">
                 <svg
                   className="w-6 h-6 text-forest group-hover:text-white transition-colors"
                   fill="none"
@@ -362,7 +363,7 @@ export default function ContactPage() {
                 Explore Dubai opportunities
               </p>
             </Link>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
     </>

@@ -4,6 +4,7 @@ import { SITE_CONFIG, FAQS } from "@/lib/constants";
 import { FaqJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { ContactForm } from "@/components/ui/ContactForm";
 import { CTASection } from "@/components/sections/CTASection";
+import { AnimatedSection, AnimatedChildren } from "@/components/ui/AnimatedSection";
 
 export const metadata: Metadata = {
   title: "Sell Your Home in Toronto | Free Home Valuation | GTA Realtor",
@@ -140,7 +141,7 @@ export default function SellHomePage() {
       />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-forest text-white relative overflow-hidden">
+      <AnimatedSection animation="fade-up" className="pt-32 pb-16 bg-forest text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -174,10 +175,11 @@ export default function SellHomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Free Valuation Section */}
-      <section
+      <AnimatedSection
+        animation="fade-up"
         id="valuation"
         className="section-padding bg-white"
         aria-labelledby="valuation-heading"
@@ -250,10 +252,10 @@ export default function SellHomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Marketing Services */}
-      <section className="section-padding bg-ivory" aria-labelledby="marketing-heading">
+      <AnimatedSection animation="fade-up" className="section-padding bg-ivory" aria-labelledby="marketing-heading">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-sm font-semibold text-gold uppercase tracking-widest">
@@ -285,10 +287,11 @@ export default function SellHomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Selling Process */}
-      <section
+      <AnimatedSection
+        animation="fade-up"
         id="process"
         className="section-padding bg-white"
         aria-labelledby="process-heading"
@@ -320,10 +323,10 @@ export default function SellHomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* FAQ */}
-      <section className="section-padding bg-ivory" aria-labelledby="faq-heading">
+      <AnimatedSection animation="fade-up" className="section-padding bg-ivory" aria-labelledby="faq-heading">
         <div className="container">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
@@ -359,7 +362,7 @@ export default function SellHomePage() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* CTA */}
       <CTASection variant="valuation" />

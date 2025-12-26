@@ -4,6 +4,7 @@ import Link from "next/link";
 import { SITE_CONFIG, DUBAI_INFO, FAQS, AGENT_INFO } from "@/lib/constants";
 import { FaqJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { ContactForm } from "@/components/ui/ContactForm";
+import { AnimatedSection, AnimatedChildren } from "@/components/ui/AnimatedSection";
 
 export const metadata: Metadata = {
   title: "Dubai Real Estate Investment | Canadian Investor Guide",
@@ -42,7 +43,7 @@ export default function DubaiPage() {
       />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-forest text-white relative overflow-hidden">
+      <AnimatedSection animation="fade-up" className="pt-32 pb-16 bg-forest text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -121,10 +122,11 @@ export default function DubaiPage() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Why Dubai */}
-      <section
+      <AnimatedSection
+        animation="fade-up"
         id="benefits"
         className="section-padding bg-white"
         aria-labelledby="benefits-heading"
@@ -167,10 +169,10 @@ export default function DubaiPage() {
             ))}
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Investment Types */}
-      <section className="section-padding bg-ivory" aria-labelledby="types-heading">
+      <AnimatedSection animation="fade-up" className="section-padding bg-ivory" aria-labelledby="types-heading">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-sm font-semibold text-gold uppercase tracking-widest">
@@ -214,10 +216,10 @@ export default function DubaiPage() {
             ))}
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* My Expertise */}
-      <section className="section-padding bg-white" aria-labelledby="expertise-heading">
+      <AnimatedSection animation="fade-up" className="section-padding bg-white" aria-labelledby="expertise-heading">
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -286,10 +288,11 @@ export default function DubaiPage() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Inquiry Form */}
-      <section
+      <AnimatedSection
+        animation="fade-up"
         id="inquiry"
         className="section-padding bg-forest text-white"
         aria-labelledby="inquiry-heading"
@@ -347,10 +350,10 @@ export default function DubaiPage() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* FAQ */}
-      <section className="section-padding bg-white" aria-labelledby="faq-heading">
+      <AnimatedSection animation="fade-up" className="section-padding bg-white" aria-labelledby="faq-heading">
         <div className="container">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-12">
@@ -386,10 +389,10 @@ export default function DubaiPage() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Back to Toronto CTA */}
-      <section className="py-12 bg-ivory">
+      <AnimatedSection animation="fade-up" className="py-12 bg-ivory">
         <div className="container text-center">
           <p className="text-charcoal-light mb-4">
             Also looking for property in Toronto?
@@ -398,7 +401,7 @@ export default function DubaiPage() {
             Explore Toronto Real Estate
           </Link>
         </div>
-      </section>
+      </AnimatedSection>
     </>
   );
 }

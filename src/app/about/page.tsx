@@ -4,6 +4,7 @@ import Image from "next/image";
 import { AGENT_INFO, FAQS, SITE_CONFIG } from "@/lib/constants";
 import { FaqJsonLd, BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { CTASection } from "@/components/sections/CTASection";
+import { AnimatedSection, AnimatedChildren } from "@/components/ui/AnimatedSection";
 
 export const metadata: Metadata = {
   title: "About Lamia Chowdhury | Toronto Real Estate Agent",
@@ -43,7 +44,7 @@ export default function AboutPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-16 bg-ivory" aria-labelledby="about-heading">
         <div className="container">
-          <div className="max-w-4xl mx-auto text-center">
+          <AnimatedSection className="max-w-4xl mx-auto text-center">
             <span className="text-sm font-semibold text-gold uppercase tracking-widest">
               Meet Your Realtor
             </span>
@@ -53,7 +54,7 @@ export default function AboutPage() {
             <p className="text-xl text-charcoal-light leading-relaxed">
               {AGENT_INFO.bio.short}
             </p>
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
@@ -62,7 +63,7 @@ export default function AboutPage() {
         <div className="container">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Image */}
-            <div className="relative">
+            <AnimatedSection animation="scale" className="relative">
               <div className="aspect-[4/5] bg-ivory rounded-lg overflow-hidden relative shadow-xl">
                 <Image
                   src="/hal-body-headshot-whitedress.png"
@@ -74,9 +75,9 @@ export default function AboutPage() {
               </div>
 
               {/* Achievement Card */}
-              <div className="absolute -bottom-6 -right-6 bg-[#1a1510] text-white p-6 rounded-lg shadow-xl max-w-xs border border-gold/20">
+              <AnimatedSection delay={300} className="absolute -bottom-6 -right-6 bg-[#1a1510] text-white p-6 rounded-lg shadow-xl max-w-xs border border-gold/20">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-gold rounded-full flex items-center justify-center">
+                  <div className="w-10 h-10 bg-gold rounded-full flex items-center justify-center animate-glow-pulse">
                     <svg
                       className="w-5 h-5 text-[#1a1510]"
                       fill="currentColor"
@@ -94,11 +95,11 @@ export default function AboutPage() {
                 <p className="text-sm text-gold/80">
                   Top Performer Feb, Apr, May 2025
                 </p>
-              </div>
-            </div>
+              </AnimatedSection>
+            </AnimatedSection>
 
             {/* Content */}
-            <div>
+            <AnimatedSection delay={200}>
               <h2 className="text-3xl font-display font-semibold text-forest mb-6">
                 Your Partner in Toronto & Global Real Estate
               </h2>
@@ -157,7 +158,7 @@ export default function AboutPage() {
               </div>
 
               {/* Affiliations */}
-              <div className="p-6 bg-ivory rounded-lg">
+              <div className="p-6 bg-ivory rounded-lg hover:shadow-md transition-shadow duration-300">
                 <h3 className="font-display text-lg font-semibold text-forest mb-4">
                   Professional Affiliations
                 </h3>
@@ -172,7 +173,7 @@ export default function AboutPage() {
                   </div>
                 </div>
               </div>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
@@ -180,22 +181,22 @@ export default function AboutPage() {
       {/* Achievements Section */}
       <section className="section-padding bg-ivory" aria-labelledby="achievements-heading">
         <div className="container">
-          <div className="text-center max-w-3xl mx-auto mb-12">
+          <AnimatedSection className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-sm font-semibold text-gold uppercase tracking-widest">
               Recognition
             </span>
             <h2 id="achievements-heading" className="mt-4 text-forest">
               Awards & Achievements
             </h2>
-          </div>
+          </AnimatedSection>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
+          <AnimatedChildren className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto" staggerDelay={100}>
             {AGENT_INFO.achievements.map((achievement) => (
               <div
                 key={achievement}
-                className="bg-white p-6 rounded-lg text-center shadow-sm border border-ivory-dark"
+                className="group bg-white p-6 rounded-lg text-center shadow-sm border border-ivory-dark hover:shadow-lg hover:-translate-y-2 hover:border-gold/30 transition-all duration-300"
               >
-                <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <div className="w-12 h-12 bg-gold/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-gold/20 group-hover:scale-110 transition-all duration-300">
                   <svg
                     className="w-6 h-6 text-gold"
                     fill="currentColor"
@@ -208,7 +209,7 @@ export default function AboutPage() {
                 <p className="font-semibold text-forest">{achievement}</p>
               </div>
             ))}
-          </div>
+          </AnimatedChildren>
         </div>
       </section>
 
@@ -216,27 +217,27 @@ export default function AboutPage() {
       <section className="section-padding bg-white" aria-labelledby="faq-heading">
         <div className="container">
           <div className="max-w-3xl mx-auto">
-            <div className="text-center mb-12">
+            <AnimatedSection className="text-center mb-12">
               <span className="text-sm font-semibold text-gold uppercase tracking-widest">
                 Common Questions
               </span>
               <h2 id="faq-heading" className="mt-4 text-forest">
                 Frequently Asked Questions
               </h2>
-            </div>
+            </AnimatedSection>
 
-            <div className="space-y-4">
+            <AnimatedChildren className="space-y-4" staggerDelay={80}>
               {allFaqs.map((faq, index) => (
                 <details
                   key={index}
-                  className="group bg-ivory rounded-lg"
+                  className="group bg-ivory rounded-lg hover:shadow-md transition-shadow duration-300"
                 >
                   <summary className="flex items-center justify-between p-6 cursor-pointer list-none">
                     <h3 className="font-display text-lg font-semibold text-forest pr-8">
                       {faq.question}
                     </h3>
                     <svg
-                      className="w-5 h-5 text-gold shrink-0 transition-transform group-open:rotate-180"
+                      className="w-5 h-5 text-gold shrink-0 transition-transform duration-300 group-open:rotate-180"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -257,16 +258,16 @@ export default function AboutPage() {
                   </div>
                 </details>
               ))}
-            </div>
+            </AnimatedChildren>
 
-            <div className="text-center mt-8">
+            <AnimatedSection delay={400} className="text-center mt-8">
               <p className="text-charcoal-light mb-4">
                 Have more questions? I&apos;d love to hear from you.
               </p>
               <Link href="/contact" className="btn btn-primary">
                 Ask a Question
               </Link>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>

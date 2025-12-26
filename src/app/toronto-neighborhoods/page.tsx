@@ -14,6 +14,7 @@ const neighborhoodImages: Record<string, string> = {
 };
 import { BreadcrumbJsonLd } from "@/components/seo/JsonLd";
 import { CTASection } from "@/components/sections/CTASection";
+import { AnimatedSection, AnimatedChildren } from "@/components/ui/AnimatedSection";
 
 export const metadata: Metadata = {
   title: "Toronto Neighborhoods Guide | GTA Areas | Find Your Perfect Community",
@@ -153,7 +154,7 @@ export default function NeighborhoodsPage() {
       />
 
       {/* Hero Section */}
-      <section className="pt-32 pb-16 bg-forest text-white relative overflow-hidden">
+      <AnimatedSection animation="fade-up" className="pt-32 pb-16 bg-forest text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-5">
           <svg className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -183,7 +184,7 @@ export default function NeighborhoodsPage() {
             </Link>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* Quick Nav */}
       <section className="py-8 bg-white border-b border-ivory-dark sticky top-[var(--header-height)] z-30">
@@ -206,7 +207,7 @@ export default function NeighborhoodsPage() {
       </section>
 
       {/* Neighborhood Details */}
-      <section className="section-padding bg-white">
+      <AnimatedSection animation="fade-up" className="section-padding bg-white">
         <div className="container">
           <div className="space-y-24">
             {neighborhoodDetails.map((neighborhood, index) => (
@@ -310,10 +311,10 @@ export default function NeighborhoodsPage() {
             ))}
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* All Service Areas */}
-      <section className="section-padding bg-ivory" aria-labelledby="areas-heading">
+      <AnimatedSection animation="fade-up" className="section-padding bg-ivory" aria-labelledby="areas-heading">
         <div className="container">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-sm font-semibold text-gold uppercase tracking-widest">
@@ -364,7 +365,7 @@ export default function NeighborhoodsPage() {
             </div>
           </div>
         </div>
-      </section>
+      </AnimatedSection>
 
       {/* CTA */}
       <CTASection variant="consultation" />

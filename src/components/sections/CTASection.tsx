@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { AGENT_INFO } from "@/lib/constants";
+import { AnimatedSection, AnimatedChildren } from "@/components/ui/AnimatedSection";
 
 interface CTASectionProps {
   variant?: "consultation" | "valuation" | "newsletter" | "dubai";
@@ -60,63 +63,93 @@ export function CTASection({ variant = "consultation" }: CTASectionProps) {
         </svg>
       </div>
 
-      {/* Gold accent line */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent" />
+      {/* Gold accent line with shimmer */}
+      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-gold to-transparent shimmer-gold" />
 
       {/* Content */}
       <div className="container relative z-10">
         <div className="max-w-3xl mx-auto text-center">
-          {/* Badge */}
-          <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-gold font-medium mb-6">
-            {badge}
-          </span>
+          <AnimatedChildren staggerDelay={150}>
+            {/* Badge */}
+            <span className="inline-block px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-sm text-gold font-medium mb-6">
+              {badge}
+            </span>
 
-          {/* Title */}
-          <h2
-            id="cta-heading"
-            className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-white mb-6"
-          >
-            {title}
-          </h2>
+            {/* Title */}
+            <h2
+              id="cta-heading"
+              className="text-3xl md:text-4xl lg:text-5xl font-display font-semibold text-white mb-6"
+            >
+              {title}
+            </h2>
 
-          {/* Description */}
-          <p className="text-lg text-white/85 leading-relaxed mb-8 max-w-2xl mx-auto">
-            {description}
-          </p>
+            {/* Description */}
+            <p className="text-lg text-white/85 leading-relaxed mb-8 max-w-2xl mx-auto">
+              {description}
+            </p>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link href={primaryCTA.href} className="btn btn-gold">
-              {primaryCTA.label}
-            </Link>
-            <Link href={secondaryCTA.href} className="btn btn-white">
-              {secondaryCTA.label}
-            </Link>
-          </div>
-
-          {/* Trust Elements */}
-          <div className="mt-12 pt-8 border-t border-white/20">
-            <div className="flex flex-wrap items-center justify-center gap-6 text-white/90 text-sm">
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link href={primaryCTA.href} className="btn btn-gold pulse-glow btn-icon-slide group/cta">
+                {primaryCTA.label}
+                <svg
+                  className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/cta:translate-x-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
                 </svg>
-                <span>{AGENT_INFO.yearsExperience} Years Experience</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </Link>
+              <Link href={secondaryCTA.href} className="btn btn-white btn-icon-slide group/cta">
+                {secondaryCTA.label}
+                <svg
+                  className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/cta:translate-x-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  />
                 </svg>
-                <span>Top Performer 2025</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <svg className="w-5 h-5 text-gold" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                </svg>
-                <span>Toronto & Dubai Markets</span>
+              </Link>
+            </div>
+
+            {/* Trust Elements */}
+            <div className="mt-12 pt-8 border-t border-white/20">
+              <div className="flex flex-wrap items-center justify-center gap-6 text-white/90 text-sm">
+                <div className="flex items-center gap-2 group">
+                  <svg className="w-5 h-5 text-gold group-hover:animate-icon-bounce" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>{AGENT_INFO.yearsExperience} Years Experience</span>
+                </div>
+                <div className="flex items-center gap-2 group">
+                  <svg className="w-5 h-5 text-gold group-hover:animate-icon-bounce" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Top Performer 2025</span>
+                </div>
+                <div className="flex items-center gap-2 group">
+                  <svg className="w-5 h-5 text-gold group-hover:animate-icon-bounce" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Toronto & Dubai Markets</span>
+                </div>
               </div>
             </div>
-          </div>
+          </AnimatedChildren>
         </div>
       </div>
     </section>

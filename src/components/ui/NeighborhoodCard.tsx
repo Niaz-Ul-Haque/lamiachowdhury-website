@@ -19,8 +19,8 @@ export function NeighborhoodCard({
   image,
 }: NeighborhoodCardProps) {
   return (
-    <article className="card group relative overflow-hidden">
-      <div className="relative aspect-[3/2] bg-ivory-dark overflow-hidden">
+    <article className="card group relative overflow-hidden card-shine">
+      <div className="relative aspect-[3/2] bg-ivory-dark overflow-hidden image-shine">
         {image ? (
           <Image
             src={image}
@@ -73,11 +73,12 @@ export function NeighborhoodCard({
         </p>
 
         {/* Features */}
-        <div className="flex flex-wrap gap-2 mb-4">
-          {features.map((feature) => (
+        <div className="flex flex-wrap gap-2 mb-4 feature-tags-animated">
+          {features.map((feature, index) => (
             <span
               key={feature}
-              className="text-xs px-2 py-1 bg-ivory rounded text-charcoal-light"
+              className="feature-tag text-xs px-2 py-1 bg-ivory rounded text-charcoal-light transition-all duration-300 group-hover:bg-gold/10 group-hover:text-forest"
+              style={{ transitionDelay: `${index * 50}ms` }}
             >
               {feature}
             </span>
@@ -87,11 +88,11 @@ export function NeighborhoodCard({
         {/* Link */}
         <Link
           href={`/toronto-neighborhoods#${slug}`}
-          className="inline-flex items-center text-sm font-medium text-forest hover:text-gold transition-colors group/link"
+          className="inline-flex items-center text-sm font-medium text-forest hover:text-gold transition-colors group/link link-arrow"
         >
           Explore {name}
           <svg
-            className="w-4 h-4 ml-1 transform group-hover/link:translate-x-1 transition-transform"
+            className="w-4 h-4 ml-1"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"

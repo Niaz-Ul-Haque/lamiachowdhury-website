@@ -30,7 +30,7 @@ export function MarketInsights() {
               {MARKET_INSIGHTS.highlights.map((highlight) => (
                 <div
                   key={highlight.title}
-                  className="flex items-start gap-4 p-4 bg-ivory rounded-lg"
+                  className="flex items-start gap-4 p-4 bg-ivory rounded-lg transition-all duration-300 hover:shadow-md hover:-translate-y-1"
                 >
                   {/* Trend Icon */}
                   <div
@@ -42,7 +42,7 @@ export function MarketInsights() {
                   >
                     {highlight.trend === "up" ? (
                       <svg
-                        className="w-5 h-5"
+                        className="w-5 h-5 animate-trend-up"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -57,7 +57,7 @@ export function MarketInsights() {
                       </svg>
                     ) : (
                       <svg
-                        className="w-5 h-5"
+                        className="w-5 h-5 animate-trend-down"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -89,18 +89,32 @@ export function MarketInsights() {
               Last updated: {MARKET_INSIGHTS.lastUpdated}
             </p>
 
-            <Link href="/contact?intent=market-updates" className="btn btn-primary">
+            <Link href="/contact?intent=market-updates" className="btn btn-primary btn-icon-slide group/cta">
               Get Monthly Market Updates
+              <svg
+                className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/cta:translate-x-1"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M14 5l7 7m0 0l-7 7m7-7H3"
+                />
+              </svg>
             </Link>
           </AnimatedSection>
 
           {/* Insights Cards */}
           <AnimatedChildren className="space-y-6" staggerDelay={200}>
             {/* Buyer Card */}
-            <div className="p-8 bg-gradient-to-br from-[#1a1510] to-[#2a2015] rounded-lg text-white">
+            <div className="group p-8 bg-gradient-to-br from-[#1a1510] to-[#2a2015] rounded-lg text-white transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
               <div className="flex items-center gap-2 mb-4">
                 <svg
-                  className="w-6 h-6 text-gold"
+                  className="w-6 h-6 text-gold group-hover:animate-icon-bounce"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -122,11 +136,11 @@ export function MarketInsights() {
               </p>
               <Link
                 href="/buy-a-home-in-toronto"
-                className="inline-flex items-center text-gold hover:text-gold-light transition-colors"
+                className="group/link inline-flex items-center text-gold hover:text-gold-light transition-colors"
               >
                 Start Your Search
                 <svg
-                  className="w-4 h-4 ml-2"
+                  className="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -143,10 +157,10 @@ export function MarketInsights() {
             </div>
 
             {/* Seller Card */}
-            <div className="p-8 bg-ivory rounded-lg border border-ivory-dark">
+            <div className="group p-8 bg-ivory rounded-lg border border-ivory-dark transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-gold/30">
               <div className="flex items-center gap-2 mb-4">
                 <svg
-                  className="w-6 h-6 text-gold"
+                  className="w-6 h-6 text-gold group-hover:animate-icon-bounce"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -168,11 +182,11 @@ export function MarketInsights() {
               </p>
               <Link
                 href="/sell-your-home-in-toronto"
-                className="inline-flex items-center text-forest hover:text-gold transition-colors"
+                className="group/link inline-flex items-center text-forest hover:text-gold transition-colors"
               >
                 Get Your Home Valued
                 <svg
-                  className="w-4 h-4 ml-2"
+                  className="w-4 h-4 ml-2 transition-transform group-hover/link:translate-x-1"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"

@@ -112,11 +112,11 @@ export function ContactForm({
       <div
         className={`p-8 text-center ${
           isDark ? "bg-white/10 text-white" : "bg-success/10"
-        } rounded-lg`}
+        } rounded-lg animate-scale-bounce`}
         role="alert"
         aria-live="polite"
       >
-        <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-success/20 flex items-center justify-center">
+        <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-success/20 flex items-center justify-center animate-success-pop">
           <svg
             className="w-8 h-8 text-success"
             fill="none"
@@ -125,6 +125,7 @@ export function ContactForm({
             aria-hidden="true"
           >
             <path
+              className="animate-check-draw"
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth={2}
@@ -132,10 +133,10 @@ export function ContactForm({
             />
           </svg>
         </div>
-        <h3 className={`font-display text-xl font-semibold mb-2 ${isDark ? "text-white" : "text-forest"}`}>
+        <h3 className={`font-display text-xl font-semibold mb-2 ${isDark ? "text-white" : "text-forest"} animate-slide-up`} style={{ animationDelay: '200ms' }}>
           Message Sent!
         </h3>
-        <p className={isDark ? "text-white/80" : "text-charcoal-light"}>
+        <p className={`${isDark ? "text-white/80" : "text-charcoal-light"} animate-slide-up`} style={{ animationDelay: '300ms' }}>
           Thank you for reaching out. I&apos;ll get back to you shortly.
         </p>
       </div>
@@ -169,7 +170,7 @@ export function ContactForm({
             aria-describedby={errors.name ? "name-error" : undefined}
           />
           {errors.name && (
-            <p id="name-error" className="form-error" role="alert">
+            <p id="name-error" className="form-error animate-shake" role="alert">
               {errors.name}
             </p>
           )}
@@ -193,7 +194,7 @@ export function ContactForm({
             aria-describedby={errors.email ? "email-error" : undefined}
           />
           {errors.email && (
-            <p id="email-error" className="form-error" role="alert">
+            <p id="email-error" className="form-error animate-shake" role="alert">
               {errors.email}
             </p>
           )}
@@ -258,7 +259,7 @@ export function ContactForm({
           aria-describedby={errors.message ? "message-error" : undefined}
         />
         {errors.message && (
-          <p id="message-error" className="form-error" role="alert">
+          <p id="message-error" className="form-error animate-shake" role="alert">
             {errors.message}
           </p>
         )}
@@ -270,7 +271,7 @@ export function ContactForm({
         disabled={isSubmitting}
         className={`btn w-full ${isDark ? "btn-gold" : "btn-primary"} ${
           isSubmitting ? "opacity-70 cursor-not-allowed" : ""
-        }`}
+        } btn-icon-slide group/btn`}
       >
         {isSubmitting ? (
           <>
@@ -297,7 +298,23 @@ export function ContactForm({
             Sending...
           </>
         ) : (
-          submitLabel
+          <>
+            {submitLabel}
+            <svg
+              className="w-4 h-4 ml-2 transition-transform duration-300 group-hover/btn:translate-x-1"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </>
         )}
       </button>
 

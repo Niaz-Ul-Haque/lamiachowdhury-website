@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import { SITE_CONFIG, AGENT_INFO, NAVIGATION, SERVICE_AREAS } from "@/lib/constants";
+import { AnimatedSection, AnimatedChildren } from "@/components/ui/AnimatedSection";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
@@ -8,11 +11,11 @@ export function Footer() {
     <footer className="bg-[#1a1510] text-white" role="contentinfo">
       {/* Main Footer */}
       <div className="container section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <AnimatedChildren className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8" staggerDelay={100}>
           {/* Brand & Contact */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-block mb-6" aria-label="Home">
-              <span className="font-display text-2xl font-semibold text-white">
+            <Link href="/" className="inline-block mb-6 group" aria-label="Home">
+              <span className="font-display text-2xl font-semibold text-white group-hover:text-gold transition-colors duration-300">
                 {SITE_CONFIG.name}
               </span>
               <span className="block text-xs text-gold tracking-widest uppercase mt-1">
@@ -50,7 +53,7 @@ export function Footer() {
                 href={AGENT_INFO.social.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-gold hover:text-[#1a1510] transition-colors"
+                className="social-icon-animated w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-gold hover:text-[#1a1510]"
                 aria-label="Follow on Instagram"
               >
                 <svg
@@ -71,7 +74,7 @@ export function Footer() {
                 href={AGENT_INFO.social.century21Profile}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-gold hover:text-[#1a1510] transition-colors"
+                className="social-icon-animated w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-gold hover:text-[#1a1510]"
                 aria-label="View Century 21 Profile"
               >
                 <svg
@@ -88,7 +91,7 @@ export function Footer() {
                 href={AGENT_INFO.social.cieloProfile}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-gold hover:text-[#1a1510] transition-colors"
+                className="social-icon-animated w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-gold hover:text-[#1a1510]"
                 aria-label="View Cielo Properties Profile"
               >
                 <svg
@@ -108,17 +111,17 @@ export function Footer() {
                 href={AGENT_INFO.social.century21Profile}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-white/90 hover:text-gold transition-colors"
+                className="group/link block text-white/90 hover:text-gold transition-colors"
               >
-                Century 21 Profile →
+                Century 21 Profile <span className="inline-block transition-transform group-hover/link:translate-x-1">→</span>
               </a>
               <a
                 href={AGENT_INFO.social.cieloProfile}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block text-white/90 hover:text-gold transition-colors"
+                className="group/link block text-white/90 hover:text-gold transition-colors"
               >
-                Cielo Dubai Profile →
+                Cielo Dubai Profile <span className="inline-block transition-transform group-hover/link:translate-x-1">→</span>
               </a>
             </div>
           </div>
@@ -133,8 +136,9 @@ export function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="text-white/80 hover:text-gold transition-colors"
+                    className="group/link text-white/80 hover:text-gold transition-colors inline-flex items-center"
                   >
+                    <span className="w-0 h-0.5 bg-gold mr-0 group-hover/link:w-2 group-hover/link:mr-2 transition-all duration-300" />
                     {item.label}
                   </Link>
                 </li>
@@ -152,8 +156,9 @@ export function Footer() {
                 <li key={area}>
                   <Link
                     href="/toronto-neighborhoods"
-                    className="text-white/80 hover:text-gold transition-colors"
+                    className="group/link text-white/80 hover:text-gold transition-colors inline-flex items-center"
                   >
+                    <span className="w-0 h-0.5 bg-gold mr-0 group-hover/link:w-2 group-hover/link:mr-2 transition-all duration-300" />
                     {area}
                   </Link>
                 </li>
@@ -171,15 +176,16 @@ export function Footer() {
                 <li key={area}>
                   <Link
                     href="/toronto-neighborhoods"
-                    className="text-white/80 hover:text-gold transition-colors"
+                    className="group/link text-white/80 hover:text-gold transition-colors inline-flex items-center"
                   >
+                    <span className="w-0 h-0.5 bg-gold mr-0 group-hover/link:w-2 group-hover/link:mr-2 transition-all duration-300" />
                     {area}
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
-        </div>
+        </AnimatedChildren>
       </div>
 
       {/* Brokerage & Compliance */}

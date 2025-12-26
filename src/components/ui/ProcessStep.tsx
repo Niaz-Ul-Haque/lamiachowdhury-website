@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
+
 interface ProcessStepProps {
   step: number;
   title: string;
@@ -96,25 +100,51 @@ export function ProcessStep({
   icon,
   isLast = false,
 }: ProcessStepProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const stepRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (stepRef.current) {
+      observer.observe(stepRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="relative flex gap-6">
+    <div ref={stepRef} className="relative flex gap-6">
       {/* Timeline */}
       <div className="flex flex-col items-center">
         {/* Step Number */}
-        <div className="relative z-10 w-14 h-14 rounded-full bg-forest flex items-center justify-center text-white shadow-lg">
-          {icons[icon] || (
-            <span className="font-display text-xl font-semibold">{step}</span>
-          )}
+        <div className={`relative z-10 w-14 h-14 rounded-full bg-forest flex items-center justify-center text-white shadow-lg transition-all duration-500 ${isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`} style={{ transitionDelay: `${step * 100}ms` }}>
+          <div className={isVisible ? 'animate-icon-bounce' : ''} style={{ animationDelay: `${step * 100 + 300}ms` }}>
+            {icons[icon] || (
+              <span className="font-display text-xl font-semibold">{step}</span>
+            )}
+          </div>
         </div>
 
         {/* Connector Line */}
         {!isLast && (
-          <div className="w-0.5 h-full bg-gradient-to-b from-forest to-gold mt-4" />
+          <div 
+            className={`w-0.5 h-full bg-gradient-to-b from-forest to-gold mt-4 transition-all duration-700 origin-top ${isVisible ? 'scale-y-100' : 'scale-y-0'}`}
+            style={{ transitionDelay: `${step * 100 + 200}ms` }}
+          />
         )}
       </div>
 
       {/* Content */}
-      <div className={`pb-12 ${isLast ? "" : ""}`}>
+      <div className={`pb-12 transition-all duration-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'}`} style={{ transitionDelay: `${step * 100 + 150}ms` }}>
         <div className="flex items-center gap-3 mb-2">
           <span className="text-xs font-semibold text-gold uppercase tracking-widest">
             Step {step}
@@ -139,22 +169,54 @@ export function ProcessStepHorizontal({
   icon,
   isLast = false,
 }: ProcessStepProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const stepRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (stepRef.current) {
+      observer.observe(stepRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <div className="relative text-center flex-1">
+    <div ref={stepRef} className="relative text-center flex-1">
       {/* Icon */}
-      <div className="relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-forest text-white shadow-lg mb-4">
-        {icons[icon] || (
-          <span className="font-display text-2xl font-semibold">{step}</span>
-        )}
+      <div 
+        className={`relative inline-flex items-center justify-center w-16 h-16 rounded-full bg-forest text-white shadow-lg mb-4 transition-all duration-500 ${isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}
+        style={{ transitionDelay: `${step * 150}ms` }}
+      >
+        <div className={isVisible ? 'animate-icon-bounce' : ''} style={{ animationDelay: `${step * 150 + 300}ms` }}>
+          {icons[icon] || (
+            <span className="font-display text-2xl font-semibold">{step}</span>
+          )}
+        </div>
       </div>
 
       {/* Connector Line */}
       {!isLast && (
-        <div className="hidden lg:block absolute top-8 left-[calc(50%+40px)] w-[calc(100%-80px)] h-0.5 bg-gradient-to-r from-forest to-gold" />
+        <div 
+          className={`hidden lg:block absolute top-8 left-[calc(50%+40px)] w-[calc(100%-80px)] h-0.5 bg-gradient-to-r from-forest to-gold origin-left transition-transform duration-700 ${isVisible ? 'scale-x-100' : 'scale-x-0'}`}
+          style={{ transitionDelay: `${step * 150 + 200}ms` }}
+        />
       )}
 
       {/* Content */}
-      <div className="max-w-xs mx-auto">
+      <div 
+        className={`max-w-xs mx-auto transition-all duration-500 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+        style={{ transitionDelay: `${step * 150 + 100}ms` }}
+      >
         <span className="text-xs font-semibold text-gold uppercase tracking-widest">
           Step {step}
         </span>
