@@ -1,11 +1,86 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { TESTIMONIALS } from "@/lib/constants";
 import { TestimonialCard } from "@/components/ui/TestimonialCard";
 import { AnimatedSection, AnimatedChildren } from "@/components/ui/AnimatedSection";
+import { client, urlFor } from "@/sanity/lib/client";
+import { allTestimonialsQuery } from "@/sanity/lib/queries";
+
+interface SanityTestimonial {
+  _id: string;
+  quote: string;
+  author: string;
+  location?: string;
+  photo?: { asset: { _ref: string } };
+  transactionType?: string;
+  isSample?: boolean;
+  featured?: boolean;
+}
+
+interface DisplayTestimonial {
+  id: string | number;
+  quote: string;
+  author: string;
+  location: string;
+  image?: string;
+  isSample?: boolean;
+}
 
 export function Testimonials() {
+  const [testimonials, setTestimonials] = useState<DisplayTestimonial[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchTestimonials() {
+      try {
+        const sanityTestimonials: SanityTestimonial[] = await client.fetch(allTestimonialsQuery);
+        
+        // Transform Sanity testimonials to display format
+        const transformedSanity: DisplayTestimonial[] = sanityTestimonials.map((t) => ({
+          id: t._id,
+          quote: t.quote,
+          author: t.author,
+          location: t.location || "",
+          image: t.photo ? urlFor(t.photo).width(100).height(100).url() : undefined,
+          isSample: t.isSample || false,
+        }));
+
+        // If we have less than 3 from Sanity, fill with sample testimonials
+        let finalTestimonials = [...transformedSanity];
+        if (finalTestimonials.length < 3) {
+          const sampleFallbacks = TESTIMONIALS.slice(0, 3 - finalTestimonials.length).map((t) => ({
+            id: t.id,
+            quote: t.quote,
+            author: t.author,
+            location: t.location,
+            image: t.image,
+            isSample: true,
+          }));
+          finalTestimonials = [...finalTestimonials, ...sampleFallbacks];
+        }
+
+        setTestimonials(finalTestimonials);
+      } catch (error) {
+        console.error("Error fetching testimonials:", error);
+        // Fallback to sample testimonials on error
+        setTestimonials(TESTIMONIALS.map((t) => ({
+          id: t.id,
+          quote: t.quote,
+          author: t.author,
+          location: t.location,
+          image: t.image,
+          isSample: true,
+        })));
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchTestimonials();
+  }, []);
+
   return (
     <section
       className="section-padding bg-white"
@@ -28,9 +103,16 @@ export function Testimonials() {
 
         {/* Testimonials Grid */}
         <AnimatedChildren className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" staggerDelay={150}>
-          {TESTIMONIALS.map((testimonial) => (
-            <TestimonialCard key={testimonial.id} {...testimonial} />
-          ))}
+          {loading ? (
+            // Loading skeleton
+            Array.from({ length: 3 }).map((_, i) => (
+              <div key={i} className="bg-cream/50 rounded-lg p-6 animate-pulse h-48" />
+            ))
+          ) : (
+            testimonials.map((testimonial) => (
+              <TestimonialCard key={testimonial.id} {...testimonial} />
+            ))
+          )}
         </AnimatedChildren>
 
         {/* Note about samples */}
