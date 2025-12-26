@@ -1,0 +1,708 @@
+[
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string",
+        "title": "Property Title"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "address",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "e.g., $699,000 or $1,299,000",
+        "name": "price",
+        "type": "string"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "For Sale",
+              "value": "for-sale"
+            },
+            {
+              "title": "Sold",
+              "value": "sold"
+            },
+            {
+              "title": "Pending",
+              "value": "pending"
+            },
+            {
+              "title": "Coming Soon",
+              "value": "coming-soon"
+            }
+          ]
+        },
+        "initialValue": "for-sale",
+        "name": "status",
+        "type": "string"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Condo",
+              "value": "condo"
+            },
+            {
+              "title": "Townhouse",
+              "value": "townhouse"
+            },
+            {
+              "title": "Semi-Detached",
+              "value": "semi-detached"
+            },
+            {
+              "title": "Detached",
+              "value": "detached"
+            },
+            {
+              "title": "Loft",
+              "value": "loft"
+            }
+          ]
+        },
+        "name": "propertyType",
+        "type": "string"
+      },
+      {
+        "name": "bedrooms",
+        "type": "number"
+      },
+      {
+        "name": "bathrooms",
+        "type": "number"
+      },
+      {
+        "name": "squareFeet",
+        "type": "string"
+      },
+      {
+        "name": "neighborhood",
+        "type": "string"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "mainImage",
+        "type": "image"
+      },
+      {
+        "of": [
+          {
+            "options": {
+              "hotspot": true
+            },
+            "type": "image"
+          }
+        ],
+        "name": "gallery",
+        "type": "array",
+        "title": "Gallery Images"
+      },
+      {
+        "rows": 4,
+        "name": "description",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "features",
+        "type": "array"
+      },
+      {
+        "initialValue": false,
+        "name": "featured",
+        "type": "boolean",
+        "title": "Featured on Homepage"
+      },
+      {
+        "description": "Lower numbers appear first",
+        "name": "order",
+        "type": "number",
+        "title": "Display Order"
+      }
+    ],
+    "name": "property",
+    "type": "document",
+    "title": "Featured Properties"
+  },
+  {
+    "fields": [
+      {
+        "rows": 4,
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "quote",
+        "type": "text"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "author",
+        "type": "string",
+        "title": "Author Name"
+      },
+      {
+        "description": "e.g., First-time buyers, Scarborough",
+        "name": "location",
+        "type": "string",
+        "title": "Location / Context"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "photo",
+        "type": "image",
+        "title": "Author Photo"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Buyer",
+              "value": "buyer"
+            },
+            {
+              "title": "Seller",
+              "value": "seller"
+            },
+            {
+              "title": "Investor",
+              "value": "investor"
+            },
+            {
+              "title": "Dubai Investment",
+              "value": "dubai"
+            }
+          ]
+        },
+        "name": "transactionType",
+        "type": "string"
+      },
+      {
+        "initialValue": false,
+        "name": "featured",
+        "type": "boolean",
+        "title": "Featured on Homepage"
+      },
+      {
+        "initialValue": false,
+        "description": "Mark as true if this is a placeholder/sample testimonial",
+        "name": "isSample",
+        "type": "boolean",
+        "title": "Is Sample Testimonial"
+      },
+      {
+        "description": "Lower numbers appear first",
+        "name": "order",
+        "type": "number",
+        "title": "Display Order"
+      }
+    ],
+    "name": "testimonial",
+    "type": "document",
+    "title": "Testimonials"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "name",
+        "type": "string",
+        "title": "Neighborhood Name"
+      },
+      {
+        "options": {
+          "source": "name",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              },
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "rows": 2,
+        "description": "Brief description for cards (1-2 sentences)",
+        "name": "shortDescription",
+        "type": "text"
+      },
+      {
+        "rows": 6,
+        "description": "Detailed description for the neighborhood page",
+        "name": "fullDescription",
+        "type": "text"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image",
+        "title": "Main Image"
+      },
+      {
+        "description": "e.g., $750,000+",
+        "name": "averagePrice",
+        "type": "string",
+        "title": "Average Price Range"
+      },
+      {
+        "description": "e.g., Walkable, Good Schools, Transit Hub",
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "features",
+        "type": "array",
+        "title": "Key Features"
+      },
+      {
+        "description": "Detailed bullet points about the neighborhood",
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "highlights",
+        "type": "array",
+        "title": "Neighborhood Highlights"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Condos",
+              "value": "Condos"
+            },
+            {
+              "title": "Lofts",
+              "value": "Lofts"
+            },
+            {
+              "title": "Townhouses",
+              "value": "Townhouses"
+            },
+            {
+              "title": "Semi-Detached",
+              "value": "Semi-Detached"
+            },
+            {
+              "title": "Detached",
+              "value": "Detached"
+            }
+          ]
+        },
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "propertyTypes",
+        "type": "array",
+        "title": "Property Types Available"
+      },
+      {
+        "description": "e.g., Young professionals, Families, First-time buyers",
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "idealFor",
+        "type": "array"
+      },
+      {
+        "options": {
+          "list": [
+            {
+              "title": "Toronto",
+              "value": "toronto"
+            },
+            {
+              "title": "GTA",
+              "value": "gta"
+            }
+          ]
+        },
+        "name": "region",
+        "type": "string"
+      },
+      {
+        "initialValue": false,
+        "name": "featured",
+        "type": "boolean",
+        "title": "Featured on Homepage"
+      },
+      {
+        "description": "Lower numbers appear first",
+        "name": "order",
+        "type": "number",
+        "title": "Display Order"
+      }
+    ],
+    "name": "neighborhood",
+    "type": "document",
+    "title": "Neighborhoods"
+  },
+  {
+    "fields": [
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "presence",
+                "constraint": "required"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "options": {
+          "source": "title",
+          "maxLength": 96
+        },
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "custom"
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "slug",
+        "type": "slug"
+      },
+      {
+        "description": "e.g., July 2025",
+        "name": "month",
+        "type": "string",
+        "title": "Month/Period"
+      },
+      {
+        "name": "publishedAt",
+        "type": "datetime",
+        "title": "Published Date"
+      },
+      {
+        "rows": 3,
+        "name": "summary",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "name": "title",
+                "type": "string"
+              },
+              {
+                "name": "description",
+                "type": "text"
+              },
+              {
+                "options": {
+                  "list": [
+                    {
+                      "title": "Up",
+                      "value": "up"
+                    },
+                    {
+                      "title": "Down",
+                      "value": "down"
+                    },
+                    {
+                      "title": "Stable",
+                      "value": "stable"
+                    }
+                  ]
+                },
+                "name": "trend",
+                "type": "string"
+              }
+            ],
+            "type": "object"
+          }
+        ],
+        "name": "highlights",
+        "type": "array",
+        "title": "Market Highlights"
+      },
+      {
+        "rows": 3,
+        "name": "buyerInsight",
+        "type": "text",
+        "title": "Insight for Buyers"
+      },
+      {
+        "rows": 3,
+        "name": "sellerInsight",
+        "type": "text",
+        "title": "Insight for Sellers"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "image",
+        "type": "image",
+        "title": "Featured Image"
+      },
+      {
+        "initialValue": false,
+        "name": "featured",
+        "type": "boolean",
+        "title": "Featured (Show on Homepage)"
+      }
+    ],
+    "name": "marketUpdate",
+    "type": "document",
+    "title": "Market Updates"
+  },
+  {
+    "fields": [
+      {
+        "name": "siteName",
+        "type": "string"
+      },
+      {
+        "name": "tagline",
+        "type": "string"
+      },
+      {
+        "name": "agentName",
+        "type": "string"
+      },
+      {
+        "name": "agentTitle",
+        "type": "string"
+      },
+      {
+        "name": "credentials",
+        "type": "string"
+      },
+      {
+        "name": "phone",
+        "type": "string",
+        "title": "Phone Number"
+      },
+      {
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "name": "brokerage",
+        "type": "string",
+        "title": "Brokerage Name"
+      },
+      {
+        "name": "dubaiAffiliation",
+        "type": "string"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "name": "instagramUrl",
+        "type": "url",
+        "title": "Instagram URL"
+      },
+      {
+        "validation": [
+          {
+            "rules": [
+              {
+                "flag": "uri",
+                "constraint": {
+                  "options": {
+                    "scheme": [
+                      "/^http$/",
+                      "/^https$/"
+                    ],
+                    "allowRelative": false,
+                    "relativeOnly": false,
+                    "allowCredentials": false
+                  }
+                }
+              }
+            ],
+            "level": "error"
+          }
+        ],
+        "description": "Your Calendly booking link",
+        "name": "calendlyUrl",
+        "type": "url",
+        "title": "Calendly URL"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "headshot",
+        "type": "image",
+        "title": "Agent Headshot"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "heroBackground",
+        "type": "image",
+        "title": "Hero Background Image"
+      },
+      {
+        "rows": 3,
+        "name": "shortBio",
+        "type": "text"
+      },
+      {
+        "rows": 6,
+        "name": "fullBio",
+        "type": "text"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "achievements",
+        "type": "array"
+      }
+    ],
+    "name": "siteSettings",
+    "type": "document"
+  }
+]
